@@ -1,42 +1,72 @@
-import React, {useState, useEffect} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-export const onIncrement = ({...state}) => {
-  state.counter = state.counter + 1;
-  return state;
-};
+export const doIncrement = (prevState) => ({
+  counter: prevState.counter + 1,
+});
 
-export const onDecrement = ({...state}) => {
-  state.counter = state.counter - 1;
-  return state; 
-};
+export const doDecrement = (prevState) => ({
+  counter: prevState.counter - 1,
+});
 
-export const Counter = ({ counter }) => {
-  return <p>{counter}</p>
-};
+class App extends Component {
+  constructor() {
+    super();
 
-export const App = () => {
-  const [ state, setState ] = useState({counter:0, asyncCounters:null});
-  useEffect(({...state})=>{
+    this.state = {
+      counter: 0,
+      asyncCounters:null
+    };
+
+    this.onIncrement = this.onIncrement.bind(this);
+    this.onDecrement = this.onDecrement.bind(this);
+  }
+
+  componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then(counter => (state.asyncCounters = counter))
-    .catch(error => console.log(error));
-  })
-  
-  const doIncrement = () => {
-    setState(onIncrement);
-  };
-  const doDecrement = () => {
-    setState(onDecrement);
-  };
+      .then(counter => this.setState({ asyncCounters: counter }))
+      .catch(error => console.log(error));
+  }
 
-  return (
-    <div>
-      <Counter counter={state.counter}/>
-      <button onClick={doIncrement}>플러스 +</button>
-      <button onClick={doDecrement}>마이너스 -</button>
-    </div>
-  );
-};
+  onIncrement() {
+    this.setState((prevState) => ({
+      counter: prevState.counter + 1,
+    }));
+  }
+
+  onDecrement() {
+    this.setState((prevState) => ({
+      counter: prevState.counter - 1,
+    }));
+  }
+
+  render() {
+    const { counter } = this.state;
+
+    return (
+      <div>
+        <h1>My Counter</h1>
+        <Counter counter={counter} />
+
+        <button
+          type="button"
+          onClick={this.onIncrement}
+        >
+          Increment
+        </button>
+
+        <button
+          type="button"
+          onClick={this.onDecrement}
+        >
+          Decrement
+        </button>
+      </div>
+    );
+  }
+}
+
+export const Counter = ({ counter }) =>
+  <p>{counter}</p>
 
 export default App;
