@@ -4,11 +4,9 @@
   <a href="https://github.com/juunone/react-test-pratice">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
-  <a href="https://twitter.com/juunwon">
-    <img alt="Twitter: juunwon" src="https://img.shields.io/twitter/follow/juunwon.svg?style=social" target="_blank" />
+  <a href="https://travis-ci.com/juunone/react-test-practice">
+    <img src="https://travis-ci.com/juunone/react-test-practice.svg?branch=master">
   </a>
-  <img src="https://travis-
-ci.org/juunone/react-test-practice.svg?branch=master">
 </p>
 
 > unit test, integration test
@@ -43,7 +41,6 @@ yarn cypress:open
 
 👤 **Juunone <juunone@gmail.com>**
 
-* Twitter: [@juunwon](https://twitter.com/juunwon)
 * Github: [@juunone](https://github.com/juunone)
 
 ## 🤝 Contributing
