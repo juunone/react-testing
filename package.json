@@ -46,7 +46,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
     "jsdom": "^15.1.1",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "react-test-renderer": "^16.9.0",
     "sinon": "^7.4.1",
     "start-server-and-test": "^1.10.0"
